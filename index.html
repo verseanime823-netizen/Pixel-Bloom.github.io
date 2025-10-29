@@ -25,7 +25,7 @@ header {
   font-family: 'Orbitron', sans-serif;
   font-size: 26px;
   text-align: center;
-  padding: 18px;
+  padding-top: 35px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -40,8 +40,8 @@ header {
 
 #cartBtn {
   position: fixed;
-  top: 20px;
-  right: 15px;
+  top: 75px;
+  right: 10px;
   width: 50px;
   height: 50px;
   background: linear-gradient(135deg, #38bdf8, #a855f7);
@@ -57,6 +57,7 @@ header {
   transition: transform 0.3s;
   z-index: 1000;
 }
+
 #cartBtn:hover { transform: scale(1.1); }
 
 .section {
@@ -178,6 +179,7 @@ header {
   box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
 }
 
+
 #toast {
   position: fixed;
   bottom: 100px;
@@ -281,6 +283,8 @@ header {
   gap: 5px;
   margin-left: 10px;
 }
+
+
 .cart-item .qty-controls button {
   background: #38bdf8;
   border: none;
@@ -404,14 +408,228 @@ header {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* 🔍 Search container */
+.search-container {
+  position: sticky;
+  top: 10px;
+  z-index: 999;
+  width: 90%;
+  max-width: 280px;
+  
+  background: #0f111a;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
 
+
+/* 🔤 Input field */
+#searchInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 40px 12px 15px; /* space for × button */
+  border-radius: 10px;
+  border: 2px solid #2d3344;
+  background: #161a24;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+#searchInput:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(168,85,247,0.3);
+}
+
+/* ❌ Clear (×) button — larger, cleaner, centered */
+#clearBtn {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;        /* bigger size */
+  color: #bbb;
+  cursor: pointer;
+  user-select: none;
+  display: none;          /* shows when typing */
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+/* hover effect */
+#clearBtn:hover {
+  color: #fff;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* slight touch-friendly padding for mobile */
+@media (max-width: 500px) {
+  #clearBtn {
+    right: 15px;
+    font-size: 24px;
+  }
+}
+
+
+/* 💡 Suggestion box */
+#suggestions {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: #1b1f2a;
+  border: 1px solid #2d3344;
+  border-radius: 10px;
+  z-index: 2000;
+  display: none;
+  max-height: 250px;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(168,85,247,0.2);
+}
+
+/* 🖼️ Suggestion item */
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.suggestion-item:hover {
+  background: #252a38;
+}
+
+/* 🖼️ Image size fix */
+.suggestion-item img {
+  width: 35px;          /* smaller image */
+  height: 35px;
+  border-radius: 8px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 500px) {
+  .search-container {
+    width: 95%;
+    padding: 8px;
+  }
+  #searchInput {
+    font-size: 14px;
+    padding: 10px 35px 10px 12px;
+  }
+  #clearBtn {
+    right: 18px;
+    font-size: 18px;
+  }
+  .suggestion-item img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+
+
+
+
+.search-container {
+  position: ;   /* stays at the top area but scrolls normally */
+  top: 72px;
+  right: 10px;
+  z-index: 10;          /* small layer control */
+}
+
+.tips-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  background: linear-gradient(90deg, #ffb6c1, #ffd6d6);
+  color: #222;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: clamp(12px, 2.5vw, 14px);
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 9999;
+}
+
+/* ✨ Slide-up animation */
+.slide-up {
+  animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+ #welcome-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px;
+    background: linear-gradient(90deg, #ff0080, #7928ca);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
 </style>
 
 </head>
 <body>
 
-<header> 💮PIXEL BLOOM 💮</header>
+<header>💮PIXEL BLOOM💮</header>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search items..." />
+  </button>
+</div>
+
+  <span id="clearBtn">×</span>
+  <div id="suggestions"></div>
+</div>
 <div id="cartBtn">🛒</div>
+
+<!-- 🧠 Smart Tips & Facts Bar -->
+<div id="tipsBar" class="tips-bar">
+  💡 <span id="tipText">Loading tip...</span>
+</div>
+
+
+<h1 id="welcome-text"></h1>
+<script>
+  const text = "Welcome to Pixel Bloom 🌸 | Discover, Create & Shop Digital Art!";
+  let i = 0;
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("welcome-text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 80);
+    }
+  }
+  window.onload = typeWriter;
+</script>
+
+
 
 <!-- PFP Section -->
 <div class="section">
@@ -443,16 +661,41 @@ header {
 <div class="section">
 <h2>CC</h2>
 <div class="items">
-<div class="item" data-name="CC 1" data-price="10" data-img="./kapkap_20250817184844122_sys.jpg"><img src="./kapkap_20250817184844122_sys.jpg" alt="Anime PFP 1"><p>CC 1</p><span>₹10</span></div>
-<div class="item" data-name="CC 2" data-price="12" data-img="./kapkap_20250819075936107_sys.jpg"><img src="./kapkap_20250819075936107_sys.jpg" alt="Anime PFP 2"><p>CC 2</p><span>₹12</span></div>
-<div class="item" data-name="CC 3" data-price="10" data-img="./New Project 37 [96B79EE].png"><img src="./New Project 37 [96B79EE].png" alt="CC 3"><p>CC 3</p><span>₹10</span></div>
+<div class="item" data-name="Vibrant Glow CC" data-price="10" data-img="./kapkap_20250817184844122_sys.jpg">
+  <img src="./kapkap_20250817184844122_sys.jpg" alt="Vibrant Glow CC">
+  <p>Vibrant Glow CC</p><span>₹10</span>
+</div>
 
-<div class="item" data-name="CC 4" data-price="10" data-img="./New Project 45 [D11739C].png"><img src="./New Project 45 [D11739C].png" alt="CC 4"><p>CC 4</p><span>₹10</span></div>
+<div class="item" data-name="Dreamlight CC" data-price="12" data-img="./kapkap_20250819075936107_sys.jpg">
+  <img src="./kapkap_20250819075936107_sys.jpg" alt="Dreamlight CC">
+  <p>Dreamlight CC</p><span>₹12</span>
+</div>
 
-<div class="item" data-name="CC 5" data-price="10" data-img="./New Project 52 [0CC69DC].png"><img src="./New Project 52 [0CC69DC].png" alt="CC 5"><p>CC 5</p><span>₹10</span></div>
+<div class="item" data-name="Cyber Neon CC" data-price="10" data-img="./New Project 37 [96B79EE].png">
+  <img src="./New Project 37 [96B79EE].png" alt="Cyber Neon CC">
+  <p>Cyber Neon CC</p><span>₹10</span>
+</div>
 
-<div class="item" data-name="CC 6" data-price="10" data-img="./New Project 62 [D6F65AD].png"><img src="./New Project 62 [D6F65AD].png" alt="CC 6"><p>CC 6</p><span>₹10</span></div>
-<div class="item" data-name="CC 7"data-price="10" data-img="./IMG_20250816_095439_950.jpg"><img src="./IMG_20250816_095439_950.jpg" alt="CC 7"><p>CC 7</p><span>₹10</span></div>
+<div class="item" data-name="Dark Pulse CC" data-price="10" data-img="./New Project 45 [D11739C].png">
+  <img src="./New Project 45 [D11739C].png" alt="Dark Pulse CC">
+  <p>Dark Pulse CC</p><span>₹10</span>
+</div>
+
+<div class="item" data-name="Retro Fade CC" data-price="10" data-img="./New Project 52 [0CC69DC].png">
+  <img src="./New Project 52 [0CC69DC].png" alt="Retro Fade CC">
+  <p>Retro Fade CC</p><span>₹10</span>
+</div>
+
+<div class="item" data-name="Ocean Mist CC" data-price="10" data-img="./New Project 62 [D6F65AD].png">
+  <img src="./New Project 62 [D6F65AD].png" alt="Ocean Mist CC">
+  <p>Ocean Mist CC</p><span>₹10</span>
+</div>
+
+<div class="item" data-name="Golden Hour CC" data-price="10" data-img="./IMG_20250816_095439_950.jpg">
+  <img src="./IMG_20250816_095439_950.jpg" alt="Golden Hour CC">
+  <p>Golden Hour CC</p><span>₹10</span>
+</div>
+
 <div class="coming-soon">
   <p>More CC coming soon…</p>
 </div>
@@ -464,12 +707,43 @@ header {
 <div class="Thumbnailsection">
 <Center><h2>Thumbnails</h2></center>
 <div class="titems">
-<div class="items" data-name="Thumbnail 1" data-price="10" data-img="./New Project [7D03D82].png"><img src="./New Project [7D03D82].png" alt="Thumbnail 1"><p>Thumbnail 1</p><span>₹10</span></div>
-<div class="items" data-name="Thumbnail 2" data-price="12" data-img="./THUMBNAIL QR __ MJEX EDITZ [3D9ADEF].png"><img src="./THUMBNAIL QR __ MJEX EDITZ [3D9ADEF].png" alt="Thumbnail 2"><p>Thumbnail 2</p><span>₹12</span></div>
-<div class="items" data-name="Thumbnail 3" data-price="10" data-img="./New Project 198 Copy [43F0AFF].png"><img src="./New Project 198 Copy [43F0AFF].png" alt="Thumbnail 3"><p>Thumbnail 3</p><span>₹10</span></div>
-<div class="items" data-name="Thumbnail 4" data-price="10" data-img="./New Project 198 Copy Copy [B7431D2].png"><img src="./New Project 198 Copy Copy [B7431D2].png" alt="Thumbnail 4"><p>Thumbnail 4</p><span>₹10</span></div>
-<div class="items" data-name="Thumbnail 5" data-price="10" data-img="./New Project 198 Copy Copy Copy [7BE4C51].png"><img src="./New Project 198 Copy Copy Copy [7BE4C51].png"><p>Thumbnail 5</p><span>₹10</span></div>
-<div class="items" data-name="Thumbnail 6" data-price="10" data-img="./New Project 198 Copy Copy Copy Copy [CCF6149].png"><img src="./New Project 198 Copy Copy Copy Copy [CCF6149].png"><p>Thumbnail 6</p><span>₹10</span></div>
+<!-- 🔹 Thumbnails Section -->
+<div class="item" data-name="Ultra 4K Thumbnail" data-price="15" data-img="./New Project [7D03D82].png">
+  <img src="./New Project [7D03D82].png" alt="Ultra 4K Thumbnail">
+  <p>Ultra 4K Thumbnail</p>
+  <span>₹15</span>
+</div>
+
+<div class="item" data-name="Topaz Sharp Thumbnail" data-price="15" data-img="./New Project 198 Copy [43F0AFF].png">
+  <img src="./New Project 198 Copy [43F0AFF].png" alt="Topaz Sharp Thumbnail">
+  <p>Topaz Sharp Thumbnail</p>
+  <span>₹15</span>
+</div>
+
+<div class="item" data-name="Glitch FX Thumbnail" data-price="15" data-img="./New Project 198 Copy Copy [B7431D2].png">
+  <img src="./New Project 198 Copy Copy [B7431D2].png" alt="Glitch FX Thumbnail">
+  <p>Glitch FX Thumbnail</p>
+  <span>₹15</span>
+</div>
+
+<div class="item" data-name="AE Pro Thumbnail" data-price="15" data-img="./New Project 198 Copy Copy Copy [7BE4C51].png">
+  <img src="./New Project 198 Copy Copy Copy [7BE4C51].png" alt="AE Pro Thumbnail">
+  <p>AE Pro Thumbnail</p>
+  <span>₹15</span>
+</div>
+
+<div class="item" data-name="Cinematic Glow Thumbnail" data-price="15" data-img="./New Project 198 Copy Copy Copy Copy [CCF6149].png">
+  <img src="./New Project 198 Copy Copy Copy Copy [CCF6149].png" alt="Cinematic Glow Thumbnail">
+  <p>Cinematic Glow Thumbnail</p>
+  <span>₹15</span>
+</div>
+
+<div class="item" data-name="QR Frame Thumbnail" data-price="15" data-img="./THUMBNAIL QR __ MJEX EDITZ [3D9ADEF].png">
+  <img src="./THUMBNAIL QR __ MJEX EDITZ [3D9ADEF].png" alt="QR Frame Thumbnail">
+  <p>QR Frame Thumbnail</p>
+  <span>₹15</span>
+</div>
+
 <div class="coming-soon">
   <p>More THUMBNAILS coming soon…</p>
 </div>
@@ -732,6 +1006,163 @@ header {
   <p>🚀 <strong>2 New PFPs. 2 New CCs. 2 New Thumbnails. Every Day.</strong><br>
   Only on <strong>Pixel Hub</strong> — where pixels never sleep. 🌙</p>
 </div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const suggestionsBox = document.getElementById("suggestions");
+
+  // Grab all cards (items)
+  const items = Array.from(document.querySelectorAll(".item")).map(item => ({
+    name: item.dataset.name,
+    img: item.querySelector("img").src,
+    element: item
+  }));
+
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase().trim();
+    suggestionsBox.innerHTML = "";
+
+    if (query === "") {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+
+    const filtered = items.filter(i => i.name.toLowerCase().includes(query));
+
+    if (filtered.length === 0) {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+
+    filtered.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `
+        <img src="${item.img}" alt="">
+        <span>${item.name}</span>
+      `;
+      div.addEventListener("click", () => {
+        item.element.scrollIntoView({ behavior: "smooth", block: "center" });
+        item.element.classList.add("highlight");
+        setTimeout(() => item.element.classList.remove("highlight"), 2000);
+        suggestionsBox.style.display = "none";
+        searchInput.value = "";
+      });
+      suggestionsBox.appendChild(div);
+    });
+
+    suggestionsBox.style.display = "block";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-container")) {
+      suggestionsBox.style.display = "none";
+    }
+  });
+});
+
+
+
+const searchInput = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearBtn");
+
+searchInput.addEventListener("input", () => {
+  clearBtn.style.display = searchInput.value ? "block" : "none";
+});
+
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+  document.getElementById("suggestions").style.display = "none";
+});
+
+
+// ✅ Handle checkout form submission
+basinForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // stop page reload
+
+  const name = basinForm.querySelector('input[name="name"]').value.trim();
+  const delivery = basinForm.querySelector('select[name="delivery"]').value;
+  const screenshot = basinForm.querySelector('input[name="screenshot"]').files[0];
+
+  if (!name || !delivery || !screenshot) {
+    alert("⚠️ Please fill all fields and upload a screenshot.");
+    return;
+  }
+
+  // Show confirmation
+  toast.textContent = "✅ Payment confirmed! We’ll deliver your items soon.";
+  toast.style.display = "block";
+  setTimeout(() => {
+    toast.style.display = "none";
+  }, 3000);
+
+  // Reset form
+  basinForm.reset();
+  checkoutForm.style.display = "none";
+  cartModal.style.display = "none";
+  cart = [];
+  cartItems.innerHTML = "";
+  totalPrice.textContent = "Total: ₹0";
+});
+
+// 🎨 Array of engaging editing tips & facts
+const tips = [
+  "✨ A single good lighting layer can fix a thousand bad filters.",
+  "🎞️ Transitions don’t make edits great — timing does.",
+  "🌈 Always color match your clips before adding CCs for smooth flow.",
+  "⚡ Bass hits feel stronger when your cuts align perfectly with beats.",
+  "🎬 Less is more — overediting kills clarity and emotion.",
+  "🌀 Use motion blur to make fast transitions look natural.",
+  "🔥 Glow effects pop more on darker scenes — balance your exposure!",
+  "🎧 Edit to rhythm, not just lyrics — your flow will instantly level up.",
+  "💻 Layer adjustment clips instead of duplicating — it keeps your edit clean.",
+  "🎨 Export in higher bitrate for crisp colors and fewer compression marks.",
+  "🌌 Use complementary colors (like blue + orange) to make your edits stand out.",
+  "🪞 Symmetry and centered frames give cinematic vibes.",
+  "💫 Text animations feel smoother with easing — 'ease-in-out' is your best friend.",
+  "🧩 Match your CC to the mood of your edit, not just the character.",
+  "🔮 Overlay textures (dust, scratches, light leaks) can bring instant nostalgia.",
+  "🌈 Play with 'screen' and 'soft light' modes — they create dreamy tones.",
+  "🖌️ Try frame hold effects — they make impact moments hit harder.",
+  "🌟 Your pacing tells the story more than your effects ever can.",
+  "🧠 The human eye prefers smooth motion under 30ms frame difference — use motion blur!",
+  "🎬 Every pro editor keeps a 'favorite CC' folder — build yours early!"
+];
+
+// 💡 Function to rotate tips
+let currentIndex = 0;
+const tipsBar = document.querySelector('.tips-bar');
+
+function changeTip() {
+  // Fade out
+  tipsBar.style.opacity = 0;
+
+  setTimeout(() => {
+    // Change text
+    tipsBar.textContent = tips[currentIndex];
+    // Fade in
+    tipsBar.style.opacity = 1;
+
+    // Move to next tip
+    currentIndex = (currentIndex + 1) % tips.length;
+  }, 500); // wait for fade-out before showing next tip
+}
+
+// ⏱️ Change tip every 5 seconds
+setInterval(changeTip, 5000);
+
+// 🌟 Initial tip load
+tipsBar.textContent = tips[currentIndex];
+
+
+
+
+</script>
 
 </body>
 </html>
