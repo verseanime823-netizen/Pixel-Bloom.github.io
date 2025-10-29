@@ -74,10 +74,6 @@ header {
   font-family: 'Orbitron', sans-serif;
   margin-bottom: 15px;
 }
-  h3{
-    color:#a855f7;
-    font-family:' 'Orbitron', sans-serif'
-      
 
 .items {
   display: flex;
@@ -586,16 +582,29 @@ header {
 
 
 
- #welcome-text {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
-    text-align: center;
-    margin: 20px;
-    background: linear-gradient(90deg, #ff0080, #7928ca);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-</style>
+
+  
+h3 {
+  text-align: center;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  margin: 20px auto;
+  max-width: 95%;
+  box-shadow: 0 0 12px rgba(229, 46, 113, 0.6);
+  animation: glow 1.6s infinite alternate;
+  font-family: 'Orbitron', sans-serif;
+}
+
+@keyframes glow {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(1.03); opacity: 1; }
+}
+
 </style>
 
 </head>
@@ -618,39 +627,27 @@ header {
 </div>
 
 
-<h1 id="welcome-text"></h1>
-<script>
-  const text = "Welcome to Pixel Bloom 🌸 | Discover, Create & Shop Digital Art!";
-  let i = 0;
-  
-  function typeWriter() {
-    if (i < text.length) {
-      document.getElementById("welcome-text").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 80);
-    }
-  }
-  window.onload = typeWriter;
-</script>
 
 
-<H3>GET PFP AT 10 RUPEES ONLY FOR FIRST 5 BUYER </H3>
+
+<h3>🎉 Special Offer: First 5 Buyers Only! — PFPs ₹10 | CCs ₹10 🔥</h3>
+
 <!-- PFP Section -->
 <div class="section">
 <h2>PFP</h2>
 <div class="items">
 <div class="item" data-name="Messi PFP" data-price="10" data-img="./CHEF- @nerded91 [B105D72].png"><img src="./CHEF- @nerded91 [B105D72].png" alt="Messi PFP"><p>Messi PFP</p><span>₹10</span></div>
-<div class="item" data-name="Ronaldo PFP" data-price="12" data-img="./CHEF_- @NERDED91 [2F07BE1].png"><img src="./CHEF_- @NERDED91 [2F07BE1].png" alt="Ronaldo PFP"><p>Ronaldo PFP</p><span>₹12</span></div>
+<div class="item" data-name="Ronaldo PFP" data-price="12" data-img="./CHEF_- @NERDED91 [2F07BE1].png"><img src="./CHEF_- @NERDED91 [2F07BE1].png" alt="Ronaldo PFP"><p>Ronaldo PFP</p><span>₹10</span></div>
 <div class="item" data-name="Mbappé PFP" data-price="10" data-img="./New Project 163 [31FC383].png"><img src="./New Project 163 [31FC383].png" alt="Mbappé PFP"><p>Mbappé PFP</p><span>₹10</span></div>
 <div class="item" data-name="Krishna PFP" data-price="10" data-img="./New Project 36 [84A15BB].png"><img src="./New Project 36 [84A15BB].png" alt="Krishna PFP"><p>Krishna PFP</p><span>₹10</span></div>
 
 
  <div class="item" data-name="Ronaldo PFp" data-price="10" data-img="./New Project 162 [CB50FE6].png"><img src="./New Project 162 [CB50FE6].png" alt="Ronaldo PFP"><p>Ronaldo PFP</p><span>₹10</span></div>
-  <div class="item" data-name="Ronaldo PFP" data-price="12" data-img="./New Project 24 [CB8F1FB].png"><img src="./New Project 24 [CB8F1FB].png" alt="Virat PFP"><p>Ronaldo PFP</p><span>₹12</span></div>
+  <div class="item" data-name="Ronaldo PFP" data-price="12" data-img="./New Project 24 [CB8F1FB].png"><img src="./New Project 24 [CB8F1FB].png" alt="Virat PFP"><p>Ronaldo PFP</p><span>₹10</span></div>
   <div class="item" data-name="Ram Ji PFP" data-price="10" data-img="./New Project 554 Copy [CD07037].png"><img src="./New Project 554 Copy [CD07037].png" alt="Joker PFP"><p>Ram Ji PFP</p><span>₹10</span></div>
-  <div class="item" data-name="Harry Potter PFP" data-price="12" data-img="./New Project 966 [60DEBD1].png"><img src="/New Project 966 [60DEBD1].png" alt="Spiderman PFP"><p>Harry Potter PFP</p><span>₹12</span></div>
+  <div class="item" data-name="Harry Potter PFP" data-price="12" data-img="./New Project 966 [60DEBD1].png"><img src="/New Project 966 [60DEBD1].png" alt="Spiderman PFP"><p>Harry Potter PFP</p><span>₹10</span></div>
   
-<div class="item" data-name="vinicius PFP" data-price="12" data-img="./PART 2 [3EABE85].png"><img src="./PART 2 [3EABE85].png" alt="Spiderman PFP"><p>vinicius PFP</p><span>₹12</span></div>
+<div class="item" data-name="vinicius PFP" data-price="12" data-img="./PART 2 [3EABE85].png"><img src="./PART 2 [3EABE85].png" alt="Spiderman PFP"><p>vinicius PFP</p><span>₹10</span></div>
 <div class="coming-soon">
   <p>More PFPs coming soon…</p>
 </div>
@@ -672,7 +669,7 @@ header {
 
 <div class="item" data-name="Dreamlight CC" data-price="12" data-img="./kapkap_20250819075936107_sys.jpg">
   <img src="./kapkap_20250819075936107_sys.jpg" alt="Dreamlight CC">
-  <p>Dreamlight CC</p><span>₹12</span>
+  <p>Dreamlight CC</p><span>₹10</span>
 </div>
 
 <div class="item" data-name="Cyber Neon CC" data-price="10" data-img="./New Project 37 [96B79EE].png">
