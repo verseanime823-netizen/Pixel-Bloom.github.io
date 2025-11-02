@@ -25,7 +25,7 @@ header {
   font-family: 'Orbitron', sans-serif;
   font-size: 26px;
   text-align: center;
-  padding-top: 35px;
+  padding-top: 5px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -40,7 +40,7 @@ header {
 
 #cartBtn {
   position: fixed;
-  top: 75px;
+  top: 50px;
   right: 10px;
   width: 50px;
   height: 50px;
@@ -417,9 +417,10 @@ header {
   max-width: 280px;
   
   background: #0f111a;
-  padding: 10px;
+  padding:10px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  
 }
 
 
@@ -444,23 +445,23 @@ header {
 /* ❌ Clear (×) button — larger, cleaner, centered */
 #clearBtn {
   position: absolute;
-  right: 18px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 26px;        /* bigger size */
-  color: #bbb;
   cursor: pointer;
+  color: #aaa;
+  font-size: 22px;
+  font-weight: bold;
   user-select: none;
-  display: none;          /* shows when typing */
-  transition: all 0.2s ease;
-  line-height: 1;
+  display: none;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-/* hover effect */
 #clearBtn:hover {
   color: #fff;
-  transform: translateY(-50%) scale(1.15);
+  transform: translateY(-50%) scale(1.2);
 }
+
 
 /* slight touch-friendly padding for mobile */
 @media (max-width: 500px) {
@@ -474,7 +475,7 @@ header {
 /* 💡 Suggestion box */
 #suggestions {
   position: absolute;
-  top: calc(100% + 5px);
+  top:60px;
   left: 0;
   right: 0;
   background: #1b1f2a;
@@ -485,6 +486,7 @@ header {
   max-height: 250px;
   overflow-y: auto;
   box-shadow: 0 0 10px rgba(168,85,247,0.2);
+  
 }
 
 /* 🖼️ Suggestion item */
@@ -535,55 +537,12 @@ header {
 
 .search-container {
   position: ;   /* stays at the top area but scrolls normally */
-  top: 72px;
+  top: 50px;
   right: 10px;
   z-index: 10;          /* small layer control */
 }
 
-.tips-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 38px;
-  background: linear-gradient(90deg, #ffb6c1, #ffd6d6);
-  color: #222;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 600;
-  font-size: clamp(12px, 2.5vw, 14px);
-  letter-spacing: 0.3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 9999;
-}
 
-/* ✨ Slide-up animation */
-.slide-up {
-  animation: slideUp 0.6s ease;
-}
-
-@keyframes slideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-
-  
 h3 {
   text-align: center;
   background: linear-gradient(90deg, #ff8a00, #e52e71);
@@ -604,6 +563,43 @@ h3 {
   from { transform: scale(1); opacity: 0.9; }
   to { transform: scale(1.03); opacity: 1; }
 }
+.pfp-option {
+  width: 90%;
+  margin-top: 8px;
+  background: #161a24;
+  color: #fff;
+  border: 1px solid #2d3344;
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 14px;
+}
+.pfp-option:focus {
+  outline: none;
+  border-color: #a855f7;
+}
+
+.item {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: dropIn 0.6s ease forwards;
+}
+
+@keyframes dropIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.item:nth-child(1) { animation-delay: 0.1s; }
+.item:nth-child(2) { animation-delay: 0.2s; }
+.item:nth-child(3) { animation-delay: 0.3s; }
+.item:nth-child(4) { animation-delay: 0.4s; }
+.item:nth-child(5) { animation-delay: 0.5s; }
+.item:nth-child(6) { animation-delay: 0.6s; }
+.item:nth-child(7) { animation-delay: 0.7s; }
+.item:nth-child(8) { animation-delay: 0.8s; }
+.item:nth-child(9) { animation-delay: 0.9s; }
 
 </style>
 
@@ -611,52 +607,121 @@ h3 {
 <body>
 
 <header>💮PIXEL BLOOM💮</header>
+
+
 <div class="search-container">
-  <input type="text" id="searchInput" placeholder="Search items..." />
-  </button>
+  <input type="text" id="searchInput" placeholder="Search PFPs..." autocomplete="off">
+  <span id="clearBtn" title="Clear">×</span>
+  <div id="suggestions"></div>
 </div>
+
 
   <span id="clearBtn">×</span>
   <div id="suggestions"></div>
 </div>
 <div id="cartBtn">🛒</div>
-
-<!-- 🧠 Smart Tips & Facts Bar -->
-<div id="tipsBar" class="tips-bar">
-  💡 <span id="tipText">Loading tip...</span>
 </div>
 
 
 
 
 
-<h3>🎉 Special Offer: First 5 Buyers Only! — PFPs ₹10 | CCs ₹10 🔥</h3>
+<h3>🎉 Special Offer: First 5 Buyers Only! — PFPs ₹10 | CCs ₹10 | Thumbnails ₹15 🔥</h3>
 
 <!-- PFP Section -->
+<!-- PFP Section -->
 <div class="section">
-<h2>PFP</h2>
-<div class="items">
-<div class="item" data-name="Messi PFP" data-price="10" data-img="./CHEF- @nerded91 [B105D72].png"><img src="./CHEF- @nerded91 [B105D72].png" alt="Messi PFP"><p>Messi PFP</p><span>₹10</span></div>
-<div class="item" data-name="Ronaldo PFP" data-price="12" data-img="./CHEF_- @NERDED91 [2F07BE1].png"><img src="./CHEF_- @NERDED91 [2F07BE1].png" alt="Ronaldo PFP"><p>Ronaldo PFP</p><span>₹10</span></div>
-<div class="item" data-name="Mbappé PFP" data-price="10" data-img="./New Project 163 [31FC383].png"><img src="./New Project 163 [31FC383].png" alt="Mbappé PFP"><p>Mbappé PFP</p><span>₹10</span></div>
-<div class="item" data-name="Krishna PFP" data-price="10" data-img="./New Project 36 [84A15BB].png"><img src="./New Project 36 [84A15BB].png" alt="Krishna PFP"><p>Krishna PFP</p><span>₹10</span></div>
+  <h2>PFP</h2>
+  <div class="items">
 
+    <div class="item" data-name="Messi PFP" data-price="10" data-img="./CHEF- @nerded91 [B105D72].png">
+      <img src="./CHEF- @nerded91 [B105D72].png" alt="Messi PFP">
+      <p>Messi PFP</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
 
- <div class="item" data-name="Ronaldo PFp" data-price="10" data-img="./New Project 162 [CB50FE6].png"><img src="./New Project 162 [CB50FE6].png" alt="Ronaldo PFP"><p>Ronaldo PFP</p><span>₹10</span></div>
-  <div class="item" data-name="Ronaldo PFP" data-price="12" data-img="./New Project 24 [CB8F1FB].png"><img src="./New Project 24 [CB8F1FB].png" alt="Virat PFP"><p>Ronaldo PFP</p><span>₹10</span></div>
-  <div class="item" data-name="Ram Ji PFP" data-price="10" data-img="./New Project 554 Copy [CD07037].png"><img src="./New Project 554 Copy [CD07037].png" alt="Joker PFP"><p>Ram Ji PFP</p><span>₹10</span></div>
-  <div class="item" data-name="Harry Potter PFP" data-price="12" data-img="./New Project 966 [60DEBD1].png"><img src="/New Project 966 [60DEBD1].png" alt="Spiderman PFP"><p>Harry Potter PFP</p><span>₹10</span></div>
-  
-<div class="item" data-name="vinicius PFP" data-price="12" data-img="./PART 2 [3EABE85].png"><img src="./PART 2 [3EABE85].png" alt="Spiderman PFP"><p>vinicius PFP</p><span>₹10</span></div>
-<div class="coming-soon">
-  <p>More PFPs coming soon…</p>
-</div>
+    <div class="item" data-name="Ronaldo PFP" data-price="10" data-img="./CHEF_- @NERDED91 [2F07BE1].png">
+      <img src="./CHEF_- @NERDED91 [2F07BE1].png" alt="Ronaldo PFP">
+      <p>Ronaldo PFP</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <div class="item" data-name="Mbappé PFP" data-price="10" data-img="./New Project 163 [31FC383].png">
+      <img src="./New Project 163 [31FC383].png" alt="Mbappé PFP">
+      <p>Mbappé PFP</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <div class="item" data-name="Krishna PFP" data-price="10" data-img="./New Project 36 [84A15BB].png">
+      <img src="./New Project 36 [84A15BB].png" alt="Krishna PFP">
+      <p>Krishna PFP</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <div class="item" data-name="Ronaldo PFP 2" data-price="10" data-img="./New Project 162 [CB50FE6].png">
+      <img src="./New Project 162 [CB50FE6].png" alt="Ronaldo PFP 2">
+      <p>Ronaldo PFP 2</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <div class="item" data-name="Virat PFP" data-price="10" data-img="./New Project 24 [CB8F1FB].png">
+      <img src="./New Project 24 [CB8F1FB].png" alt="Virat PFP">
+      <p>Virat PFP</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <div class="item" data-name="Ram Ji PFP" data-price="10" data-img="./New Project 554 Copy [CD07037].png">
+      <img src="./New Project 554 Copy [CD07037].png" alt="Ram Ji PFP">
+      <p>Ram Ji PFP</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <div class="item" data-name="Harry Potter PFP" data-price="10" data-img="./New Project 966 [60DEBD1].png">
+      <img src="./New Project 966 [60DEBD1].png" alt="Harry Potter PFP">
+      <p>Harry Potter PFP</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <div class="item" data-name="Vinicius PFP" data-price="10" data-img="./PART 2 [3EABE85].png">
+      <img src="./PART 2 [3EABE85].png" alt="Vinicius PFP">
+      <p>Vinicius PFP</p><span>₹10</span>
+      <select class="pfp-option">
+        <option value="PFP">PFP</option>
+        <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <div class="coming-soon">
+      <p>More PFPs coming soon…</p>
+    </div>
+
+  </div>
 </div>
 
-
-</div>
- 
-</div>
 
 <!-- CC Section -->
 <div class="section">
@@ -711,37 +776,37 @@ h3 {
 <!-- 🔹 Thumbnails Section -->
 <div class="item" data-name="Ultra 4K Thumbnail" data-price="15" data-img="./New Project [7D03D82].png">
   <img src="./New Project [7D03D82].png" alt="Ultra 4K Thumbnail">
-  <p>Ultra 4K Thumbnail</p>
+  <p>Ultra 4K Thumbnail QR</p>
   <span>₹15</span>
 </div>
 
 <div class="item" data-name="Topaz Sharp Thumbnail" data-price="15" data-img="./New Project 198 Copy [43F0AFF].png">
   <img src="./New Project 198 Copy [43F0AFF].png" alt="Topaz Sharp Thumbnail">
-  <p>Topaz Sharp Thumbnail</p>
+  <p>Topaz Sharp Thumbnail QR</p>
   <span>₹15</span>
 </div>
 
 <div class="item" data-name="Glitch FX Thumbnail" data-price="15" data-img="./New Project 198 Copy Copy [B7431D2].png">
   <img src="./New Project 198 Copy Copy [B7431D2].png" alt="Glitch FX Thumbnail">
-  <p>Glitch FX Thumbnail</p>
+  <p>Glitch FX Thumbnail QR</p>
   <span>₹15</span>
 </div>
 
 <div class="item" data-name="AE Pro Thumbnail" data-price="15" data-img="./New Project 198 Copy Copy Copy [7BE4C51].png">
   <img src="./New Project 198 Copy Copy Copy [7BE4C51].png" alt="AE Pro Thumbnail">
-  <p>AE Pro Thumbnail</p>
+  <p>AE Pro Thumbnail QR</p>
   <span>₹15</span>
 </div>
 
 <div class="item" data-name="Cinematic Glow Thumbnail" data-price="15" data-img="./New Project 198 Copy Copy Copy Copy [CCF6149].png">
   <img src="./New Project 198 Copy Copy Copy Copy [CCF6149].png" alt="Cinematic Glow Thumbnail">
-  <p>Cinematic Glow Thumbnail</p>
+  <p>Cinematic Glow Thumbnail QR</p>
   <span>₹15</span>
 </div>
 
 <div class="item" data-name="QR Frame Thumbnail" data-price="15" data-img="./THUMBNAIL QR __ MJEX EDITZ [3D9ADEF].png">
   <img src="./THUMBNAIL QR __ MJEX EDITZ [3D9ADEF].png" alt="QR Frame Thumbnail">
-  <p>QR Frame Thumbnail</p>
+  <p>Topaz Frame Thumbnail QR</p>
   <span>₹15</span>
 </div>
 
@@ -914,6 +979,16 @@ h3 {
     });
     updateTotalPrice();
   }
+function animateCartItem(li) {
+  li.style.opacity = "0";
+  li.style.transform = "translateY(-15px)";
+  li.style.transition = "all 0.4s ease";
+  requestAnimationFrame(() => {
+    li.style.opacity = "1";
+    li.style.transform = "translateY(0)";
+  });
+}
+
   
   // ✅ Change quantity
   function changeQty(name, delta) {
@@ -1111,58 +1186,224 @@ basinForm.addEventListener('submit', (e) => {
   totalPrice.textContent = "Total: ₹0";
 });
 
-// 🎨 Array of engaging editing tips & facts
-const tips = [
-  "✨ A single good lighting layer can fix a thousand bad filters.",
-  "🎞️ Transitions don’t make edits great — timing does.",
-  "🌈 Always color match your clips before adding CCs for smooth flow.",
-  "⚡ Bass hits feel stronger when your cuts align perfectly with beats.",
-  "🎬 Less is more — overediting kills clarity and emotion.",
-  "🌀 Use motion blur to make fast transitions look natural.",
-  "🔥 Glow effects pop more on darker scenes — balance your exposure!",
-  "🎧 Edit to rhythm, not just lyrics — your flow will instantly level up.",
-  "💻 Layer adjustment clips instead of duplicating — it keeps your edit clean.",
-  "🎨 Export in higher bitrate for crisp colors and fewer compression marks.",
-  "🌌 Use complementary colors (like blue + orange) to make your edits stand out.",
-  "🪞 Symmetry and centered frames give cinematic vibes.",
-  "💫 Text animations feel smoother with easing — 'ease-in-out' is your best friend.",
-  "🧩 Match your CC to the mood of your edit, not just the character.",
-  "🔮 Overlay textures (dust, scratches, light leaks) can bring instant nostalgia.",
-  "🌈 Play with 'screen' and 'soft light' modes — they create dreamy tones.",
-  "🖌️ Try frame hold effects — they make impact moments hit harder.",
-  "🌟 Your pacing tells the story more than your effects ever can.",
-  "🧠 The human eye prefers smooth motion under 30ms frame difference — use motion blur!",
-  "🎬 Every pro editor keeps a 'favorite CC' folder — build yours early!"
-];
-
-// 💡 Function to rotate tips
-let currentIndex = 0;
-const tipsBar = document.querySelector('.tips-bar');
-
-function changeTip() {
-  // Fade out
-  tipsBar.style.opacity = 0;
-
-  setTimeout(() => {
-    // Change text
-    tipsBar.textContent = tips[currentIndex];
-    // Fade in
-    tipsBar.style.opacity = 1;
-
-    // Move to next tip
-    currentIndex = (currentIndex + 1) % tips.length;
-  }, 500); // wait for fade-out before showing next tip
-}
-
-// ⏱️ Change tip every 5 seconds
-setInterval(changeTip, 5000);
-
-// 🌟 Initial tip load
-tipsBar.textContent = tips[currentIndex];
 
 
 
 
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.item');
+  const cartList = document.getElementById('cartList');
+  const totalPrice = document.getElementById('totalPrice');
+  let cart = [];
+
+  // Update price display based on dropdown selection
+  items.forEach(item => {
+    const dropdown = item.querySelector('.pfp-option');
+    const priceTag = item.querySelector('span');
+
+    dropdown.addEventListener('change', () => {
+      const selected = dropdown.value;
+      if (selected === 'QR') {
+        item.dataset.price = 25;
+        priceTag.textContent = '₹25';
+      } else {
+        item.dataset.price = 10;
+        priceTag.textContent = '₹10';
+      }
+    });
+
+    // When item is clicked → add to cart with correct price
+    item.addEventListener('click', () => {
+      const name = item.dataset.name;
+      const price = parseInt(item.dataset.price);
+      const option = dropdown.value;
+      const img = item.querySelector('img').src;
+
+      // Check if already in cart
+      const existing = cart.find(c => c.name === name && c.option === option);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, option, img, quantity: 1 });
+      }
+
+      updateCart();
+    });
+  });
+
+  function updateCart() {
+    cartList.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <img src="${item.img}" style="width:40px;height:40px;border-radius:5px;margin-right:5px;">
+        ${item.name} (${item.option}) - ₹${item.price} x ${item.quantity}
+      `;
+      cartList.appendChild(li);
+animateCartItem(li);
+
+    });
+
+    totalPrice.textContent = total;
+  }
+});
+
+
+
+</script>
+
+<script>
+// ===== Search Suggestion System =====
+const searchInput = document.getElementById("searchInput");
+const suggestionsBox = document.getElementById("suggestions");
+const clearBtn = document.getElementById("clearBtn");
+
+// Collect all items (cards)
+const allItems = document.querySelectorAll(".item");
+const itemList = Array.from(allItems).map(item => ({
+  name: item.dataset.name?.toLowerCase() || "",
+  img: item.querySelector("img")?.src || "",
+}));
+
+// When user types
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase().trim();
+  clearBtn.style.display = query ? "block" : "none";
+
+  if (!query) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
+
+  // Filter results
+  const matches = itemList.filter(item => item.name.includes(query));
+
+  // Build suggestion list
+  if (matches.length === 0) {
+    suggestionsBox.innerHTML = `<div class="suggestion-item">No matches found</div>`;
+  } else {
+    suggestionsBox.innerHTML = matches.map(
+      m => `
+      <div class="suggestion-item" data-name="${m.name}">
+        <img src="${m.img}" alt="${m.name}">
+        <span>${m.name}</span>
+      </div>`
+    ).join("");
+  }
+
+  // Show with animation
+  suggestionsBox.style.display = "block";
+  suggestionsBox.classList.remove("fade");
+  void suggestionsBox.offsetWidth; // restart animation
+  suggestionsBox.classList.add("fade");
+});
+
+// When suggestion clicked
+suggestionsBox.addEventListener("click", e => {
+  const suggestion = e.target.closest(".suggestion-item");
+  if (!suggestion) return;
+
+  const name = suggestion.dataset.name;
+  const targetItem = Array.from(allItems).find(
+    i => i.dataset.name?.toLowerCase() === name
+  );
+
+  if (targetItem) {
+    targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
+    targetItem.classList.add("highlight");
+    setTimeout(() => targetItem.classList.remove("highlight"), 1000);
+  }
+
+  // Reset
+  suggestionsBox.style.display = "none";
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+});
+
+// Clear button
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  suggestionsBox.style.display = "none";
+  clearBtn.style.display = "none";
+});
+</script>
+<script>
+const searchInput = document.getElementById("searchInput");
+const suggestionsBox = document.getElementById("suggestions");
+const clearBtn = document.getElementById("clearBtn");
+
+// Collect all items (cards)
+const allItems = document.querySelectorAll(".item");
+const itemList = Array.from(allItems).map(item => ({
+  name: item.dataset.name?.toLowerCase() || "",
+  img: item.querySelector("img")?.src || "",
+}));
+
+// When user types
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase().trim();
+  clearBtn.style.display = query ? "block" : "none";
+
+  if (!query) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
+
+  // Filter results
+  const matches = itemList.filter(item => item.name.includes(query));
+
+  // Build suggestion list
+  if (matches.length === 0) {
+    suggestionsBox.innerHTML = `<div class="suggestion-item">No matches found</div>`;
+  } else {
+    suggestionsBox.innerHTML = matches.map(
+      m => `
+      <div class="suggestion-item" data-name="${m.name}">
+        <img src="${m.img}" alt="${m.name}">
+        <span>${m.name}</span>
+      </div>`
+    ).join("");
+  }
+
+  suggestionsBox.style.display = "block";
+  suggestionsBox.classList.remove("fade");
+  void suggestionsBox.offsetWidth; // restart animation
+  suggestionsBox.classList.add("fade");
+});
+
+// When suggestion clicked
+suggestionsBox.addEventListener("click", e => {
+  const suggestion = e.target.closest(".suggestion-item");
+  if (!suggestion) return;
+
+  const name = suggestion.dataset.name;
+  const targetItem = Array.from(allItems).find(
+    i => i.dataset.name?.toLowerCase() === name
+  );
+
+  if (targetItem) {
+    targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
+    targetItem.classList.add("highlight");
+    setTimeout(() => targetItem.classList.remove("highlight"), 1000);
+  }
+
+  suggestionsBox.style.display = "none";
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+});
+
+// Clear input
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  suggestionsBox.style.display = "none";
+  clearBtn.style.display = "none";
+});
 </script>
 
 </body>
