@@ -849,21 +849,30 @@ h3 {
 </div>
 
 <form id="basinForm" method="POST" enctype="multipart/form-data">
+  <!-- Name -->
   <input type="text" name="name" placeholder="Your Name" required>
+
+  <!-- Delivery Method -->
   <select id="deliveryMethod" name="delivery" required>
     <option value="">Preferred Delivery Method</option>
     <option value="gmail">Gmail</option>
     <option value="telegram">Telegram</option>
   </select>
-  <div id="contactField"></div>
-  <input type="file" name="screenshot" required>
-  <input type="hidden" name="cartData" id="cartData">
-  <center><h3>payment Screenshot 👆</h3></center>
-  <button type="submit">✅ I’ve Paid</button>
-  <h3>Contact Us:- aksumank2@gmail.com<br>
 
-Telegram Id :- @nerded91/@Anx4567</h3>
+  <!-- Contact field (appears dynamically using JS) -->
+  <div id="contactField"></div>
+
+  <!-- Screenshot Upload -->
+  <input type="file" name="screenshot" accept="image/*" required>
+  <center><h3>Payment Screenshot 👆</h3></center>
+
+  <!-- Hidden Cart Data -->
+  <input type="hidden" name="cartData" id="cartData">
+
+  <!-- Submit Button -->
+  <button type="submit">✅ I’ve Paid</button>
 </form>
+
 </div>
 </div>
 </div>
