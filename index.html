@@ -1440,5 +1440,42 @@ Telegram Id :- @nerded91/@Anx4567</h3>
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   </script>
+  <script type="module">
+  // Import Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Form logic
+  document.getElementById('basinForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const delivery = e.target.delivery.value;
+
+    await addDoc(collection(db, "orders"), {
+      name: name,
+      delivery: delivery,
+      date: new Date().toISOString()
+    });
+
+    alert("✅ Order submitted successfully!");
+    e.target.reset();
+  });
+  </script>
+  
 </body>
 </html>
